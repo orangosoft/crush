@@ -1,0 +1,13 @@
+.TourContainer {
+  @apply absolute;
+  z-index: 9999;
+}
+.TourContent {
+  @apply relative text-gray-100 text-sm grid gap-2 bg-slate-700 rounded-lg p-8;
+}
+.TourTitle {
+  @apply font-medium text-lg;
+}
+.TourArrow {
+  @apply absolute bg-slate-700 h-4 w-4;
+}

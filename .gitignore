@@ -1,0 +1,41 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules
+.pnp
+.pnp.js
+
+# testing
+coverage
+
+dist
+out/
+build
+uploads
+mock-*
+apps/todo
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# turbo
+.turbo
+tmp
+
+# firebase
+.firebase
+.log
+
+# .env
+.env.local
+tmp
+research
+vite.config.ts.timestamp*
+*.tgz

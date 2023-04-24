@@ -1,0 +1,12 @@
+{
+  "name": "@orango/slice",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "@floating-ui/dom": "^1.2.6",
+    "solid-js": "^1.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.3"
+  }
+}

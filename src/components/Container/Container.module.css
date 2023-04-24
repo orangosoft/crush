@@ -1,0 +1,7 @@
+.Container {
+  @apply flex flex-col overflow-hidden;
+}
+
+.Content {
+  @apply flex flex-col overflow-hidden;
+}
