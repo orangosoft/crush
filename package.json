@@ -4,6 +4,7 @@
   "license": "MIT",
   "dependencies": {
     "@floating-ui/dom": "^1.2.6",
+    "solid-icons": "^1.0.4",
     "solid-js": "^1.7.3"
   },
   "devDependencies": {
