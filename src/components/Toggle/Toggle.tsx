@@ -1,6 +1,4 @@
-import { Show, createEffect } from 'solid-js'
-
-import { uuid } from '@orango/shared/helpers/uuid'
+import { Show, createEffect, createUniqueId } from 'solid-js'
 
 function Toggle(props: {
   name?: string
@@ -13,7 +11,7 @@ function Toggle(props: {
   label?: string
 }) {
   let elem: any
-  const name = props.name || uuid()
+  const name = props.name || createUniqueId()
 
   const handleToggle = () => {
     props.onChange?.(elem.checked)
