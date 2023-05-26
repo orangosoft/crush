@@ -1,4 +1,4 @@
-import clickOutside from './src/directives/click-outside'
+import clickOutside from './src/directives/clickOutside'
 
 declare module 'solid-js/jsx-runtime' {
   namespace JSX {
