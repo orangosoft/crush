@@ -1,0 +1,28 @@
+.NavigationBar {
+  @apply flex items-center w-full py-1 pl-1 pr-2;
+}
+
+.AddressBar {
+  @apply p-1 text-[14px] flex items-center w-full rounded-full duration-200 hover:bg-black/20 mx-1 px-2 h-[32px] overflow-hidden;
+}
+
+.Url {
+  @apply flex-grow px-2 pr-5 overflow-hidden font-medium cursor-pointer whitespace-nowrap text-ellipsis text-sky-500;
+}
+
+.Tooltip::part(body) {
+  background-color: black;
+  color: white;
+}
+
+.Tooltip::part(base__arrow) {
+  background-color: black;
+}
+
+.NavigationButton {
+  @apply flex items-center justify-center w-[32px] min-w-[32px] aspect-square rounded-full hover:bg-neutral-700;
+}
+
+.AddressBarButton {
+  @apply flex items-center justify-center w-[24px] min-w-[24px] aspect-square rounded-full hover:bg-neutral-700;
+}

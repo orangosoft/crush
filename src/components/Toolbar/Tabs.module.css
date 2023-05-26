@@ -1,0 +1,56 @@
+.Tab {
+  @apply relative mt-0 flex w-full items-center hover:bg-[rgb(31,31,31)] h-[32px] rounded-t-lg text-white pl-2 pr-4 py-1 text-sm font-medium select-none overflow-hidden;
+  flex: 1 1 240px;
+  max-width: 240px;
+  min-width: 6px;
+  /* transition: transform 0.2s ease-in-out; */
+}
+
+.Dragging .Tab {
+  transition: transform 0.2s ease-in-out;
+}
+
+.TabIcon {
+  @apply absolute top-[50%] -translate-y-[50%] w-[16px] min-w-[16px] h-[16px] min-h-[16px] ml-[2px] mr-2;
+}
+
+.TabLabel {
+  @apply absolute top-[50%] -translate-y-[50%] left-[32px] overflow-hidden whitespace-nowrap;
+  width: calc(100% - 40px);
+}
+
+.TabActive {
+  @apply pr-4 text-white bg-neutral-800 hover:bg-neutral-800;
+}
+
+.CloseButton {
+  @apply absolute w-[32px] top-0 right-1 pr-1 items-center justify-end h-full hidden;
+}
+
+.Tab:hover .CloseButton { 
+  @apply flex;
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0) 0%,  rgba(31, 31, 31, 1) 40%);
+}
+
+.TabActive .CloseButton {
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0) 0%,  rgba(38, 38, 38, 1) 40%);
+}
+
+.TabActive:hover .CloseButton { 
+  @apply flex;
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0) 0%,  rgba(38, 38, 38, 1) 40%);
+}
+
+.TabActive .CloseButton {
+  @apply flex;
+}
+
+.DragTab {
+  @apply bg-neutral-800 relative flex w-full items-center h-[32px] rounded-t-lg text-white pl-2 pr-7 py-1 text-sm font-medium select-none duration-200;
+}
+
+.DragTab .CloseButton {
+  @apply flex;
+  background: linear-gradient(90deg, rgba(255, 0, 0, 0) 0%,  rgba(38, 38, 38, 1) 40%);
+}
+
