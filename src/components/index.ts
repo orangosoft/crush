@@ -1,3 +1,4 @@
+export * as Avatar from './Avatar'
 export * as Calendar from './Calendar'
 export * as Form from './Form'
 export * as Input from './Input'
