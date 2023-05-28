@@ -38,7 +38,7 @@
   }
 
   .avatar__initials {
-    @apply h-full w-full flex items-center justify-center cursor-pointer select-none rounded-full overflow-hidden bg-orange-600 text-white;
+    @apply h-full w-full flex items-center justify-center cursor-pointer select-none rounded-full overflow-hidden bg-neutral-600 text-white;
   }
 
   .badge {
