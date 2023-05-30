@@ -1,5 +1,3 @@
-import styles from './Container.module.css'
-
 export default function (props: any) {
   let { class: className, contentClass, children, ...rest } = props
   className = `flex flex-col overflow-hidden ${className}`
