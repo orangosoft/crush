@@ -3,11 +3,6 @@
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
-    "@felte/reporter-solid": "^1.2.5",
-    "@felte/solid": "^1.2.7",
-    "@felte/validator-zod": "^1.0.13",
-    "@floating-ui/dom": "^1.2.6",
-    "@kobalte/core": "^0.9.6",
     "solid-icons": "^1.0.4",
     "solid-js": "^1.7.3",
     "zod": "^3.21.4"
