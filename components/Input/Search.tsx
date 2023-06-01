@@ -5,11 +5,14 @@ import { TbSearch } from "solid-icons/tb"
 import { VsChromeClose } from "solid-icons/vs"
 
 export default function (props: {
+  class?: string
   value: string
   onChange: (value: string) => void
 }) {
   return (
-    <TextField.Root class='textfield' value={props.value} onChange={props.onChange}>
+    <TextField.Root class='textfield' classList={{
+      [props.class ?? '']: true,
+    }} value={props.value} onChange={props.onChange}>
       <TextField.Input class="textfield__input w-full px-8" placeholder="Search" />
       <div class='absolute v-center left-3'>
         <TbSearch />

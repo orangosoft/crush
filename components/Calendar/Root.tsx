@@ -21,21 +21,21 @@ export default function Calendar(props: {
     return currentMonth().month === cf.getMonth().month && currentMonth().year === cf.getMonth().year
   }
 
-  const prev = (ev: PointerEvent) => {
+  const prev = (ev: MouseEvent) => {
     ev.stopPropagation()
     const date = new Date(currentMonth().year, currentMonth().month - 1)
     setCurrentMonth(cf.getMonth(date.getMonth(), date.getFullYear()))
     setNextMonth(cf.getMonth(date.getMonth() + 1, date.getFullYear()))
   }
 
-  const next = (ev: PointerEvent) => {
+  const next = (ev: MouseEvent) => {
     ev.stopPropagation()
     const date = new Date(currentMonth().year, currentMonth().month + 1)
     setCurrentMonth(cf.getMonth(date.getMonth(), date.getFullYear()))
     setNextMonth(cf.getMonth(date.getMonth() + 1, date.getFullYear()))
   }
 
-  const today = (ev: PointerEvent) => {
+  const today = (ev: MouseEvent) => {
     ev.stopPropagation()
     setCurrentMonth(cf.getMonth())
     setNextMonth(cf.getMonth(now.getMonth() + 1, now.getFullYear()))
