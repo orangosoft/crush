@@ -28,6 +28,10 @@ export type CalendarOptions = {
   year: number
   month: number
   startDay?: number // 0 = sunday, 1 = monday
+  minDate?: Date
+  maxDate?: Date
+  disabledDates?: Date[]
+  dataDates?: { [key: string]: any }
 }
 
 export class CalendarFactory {
