@@ -1,0 +1,14 @@
+@layer components {
+  .button__nav {
+    @apply w-full flex items-center text-left p-2 gap-3 rounded-lg whitespace-nowrap hover:bg-gray-50;
+  }
+  
+  .button__nav:focus {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .button__nav-active {
+    @apply bg-sky-100;
+  }
+}
