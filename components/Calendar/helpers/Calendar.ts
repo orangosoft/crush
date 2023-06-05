@@ -25,13 +25,10 @@ export type CalendarMonth = {
 }
 
 export type CalendarOptions = {
-  year: number
-  month: number
+  // year: number
+  // month: number
   startDay?: number // 0 = sunday, 1 = monday
-  minDate?: Date
-  maxDate?: Date
-  disabledDates?: Date[]
-  dataDates?: { [key: string]: any }
+  selection?: 'multiple' | 'single' | 'range'
 }
 
 export class CalendarFactory {

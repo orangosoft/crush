@@ -7,8 +7,13 @@ import { For, Show, createSignal } from 'solid-js'
 import { FaRegularCircle } from 'solid-icons/fa'
 
 export default function Calendar(props: {
+  class?: string
   options?: CalendarOptions
-  onSelect?: (date: CalendareDay) => void
+  minDate?: Date
+  maxDate?: Date
+  disabledDates?: Date[]
+  dataDates?: { [key: string]: any }
+  onSelect?: (selection: CalendareDay | CalendareDay[]) => void
 }) {
   const cf = new CalendarFactory()
   const now = new Date()
@@ -41,16 +46,22 @@ export default function Calendar(props: {
     setNextMonth(cf.getMonth(now.getMonth() + 1, now.getFullYear()))
   }
 
-  const isNotPastWeek = (week: CalendarWeek) => {
-    return week.days[week.days.length - 1]?.isPast === false
-  }
+  // const isNotPastWeek = (week: CalendarWeek) => {
+  //   return week.days[week.days.length - 1]?.isPast === false
+  // }
 
   const selectDay = (day: CalendareDay | null, ev: PointerEvent) => {
-    if (day) props.onSelect?.(day)
+    if (props.options?.selection === 'single') {
+      if (day) props.onSelect?.(day)
+    } else if (props.options?.selection === 'multiple') {
+      if (day) props.onSelect?.([day])
+    } else if (props.options?.selection === 'range') {
+      if (day) props.onSelect?.([day])
+    }
   }
 
   return (
-    <div class="calendar">
+    <div class={props.class ?? 'calendar'}>
       <div class='calendar__header'>
         {cf.getMonthName(currentMonth().month, true)} {currentMonth().year}
         <div class="calendar__nav">

@@ -1,47 +1,47 @@
 .calendar {
-  @apply select-none inline-flex flex-col items-center justify-center gap-2 rounded p-2 border;
-}
+  @apply select-none inline-flex flex-col items-start justify-start gap-2 p-2 bg-white border rounded-md;
 
-.calendar__header {
-  @apply flex items-center text-sm font-bold px-2 w-full;
-}
+  .calendar__header {
+    @apply flex items-center text-sm font-bold px-2 w-full;
+  }
 
-.calendar__nav {
-  @apply flex flex-grow items-center justify-end gap-4;
-}
+  .calendar__nav {
+    @apply flex flex-grow items-center justify-end gap-4;
+  }
 
-.calendar__nav button {
-  @apply rounded-full;
-}
+  .calendar__nav button {
+    @apply rounded-full;
+  }
 
-.calendar__weekdays {
-  @apply w-full flex justify-evenly;
-}
+  .calendar__weekdays {
+    @apply w-full flex justify-evenly;
+  }
 
-.calendar__weekday {
-  @apply w-full flex gap-3 items-center justify-center h-6 text-xs text-neutral-500;
-}
+  .calendar__weekday {
+    @apply w-full flex gap-3 items-center justify-center h-6 text-xs text-neutral-500;
+  }
 
-.calendar__week {
-  @apply w-full flex gap-3 justify-evenly;
-}
+  .calendar__week {
+    @apply w-full flex gap-3 justify-evenly;
+  }
 
-.calendar__day {
-  @apply w-6 h-6 flex items-center justify-center font-normal text-xs text-center rounded-full;
-}
+  .calendar__day {
+    @apply w-6 h-6 flex items-center justify-center font-normal text-xs text-center rounded-full;
+  }
 
-.calendar__day-none {
-  @apply invisible;
-}
+  .calendar__day-none {
+    @apply invisible;
+  }
 
-.calendar__day-weekend {
-  @apply text-gray-500;
-}
+  .calendar__day-weekend {
+    @apply text-gray-500;
+  }
 
-.calendar__day-past {
-  @apply text-neutral-300;
-}
+  .calendar__day-past {
+    @apply text-neutral-300;
+  }
 
-.calendar__day-today {
-  @apply bg-sky-500 text-white font-bold;
+  .calendar__day-today {
+    @apply bg-sky-500 text-white font-bold;
+  }
 }
