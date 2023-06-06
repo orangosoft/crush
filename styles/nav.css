@@ -1,6 +1,6 @@
 @layer components {
   .button__nav {
-    @apply w-full flex items-center text-left p-2 gap-3 rounded-lg whitespace-nowrap hover:bg-gray-50;
+    @apply w-full flex items-center text-left rounded-none p-2 px-5 text-sm font-medium gap-3 whitespace-nowrap hover:bg-gray-50;
   }
   
   .button__nav:focus {
@@ -9,6 +9,6 @@
   }
   
   .button__nav-active {
-    @apply bg-sky-100;
+    @apply !bg-sky-100;
   }
 }
