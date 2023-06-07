@@ -148,14 +148,18 @@ export default function (props: {
       [props.class ?? '']: true
     }} onChange={props.onChange}>
       <Show when={props.label}>
-        <TextField.Label class="select__label">
+        <TextField.Label class="select__label" classList={{
+          'font-medium': props.required ?? false
+        }}>
           <span>{props.label}</span>
           <Show when={props.required}>
-            <span class="text-red-500"><BsAsterisk size={9} /></span>
+            <span class="text-red-500"><BsAsterisk size={11} /></span>
           </Show>
         </TextField.Label>
       </Show>
-      <TextField.Input type={props.type} name={props.name} placeholder={props.placeholder} class="textfield__input w-full" maxLength={maxLength} onInput={handleInput} onBlur={props.onBlur} />
+      <TextField.Input type={props.type} name={props.name} placeholder={props.placeholder} class="textfield__input w-full" classList={{
+        'bg-sky-50': props.required ?? false
+      }} maxLength={maxLength} onInput={handleInput} onBlur={props.onBlur} />
       <ValidationMessage for={props.name}>
         {(messages) => <span class='validation-message'>{messages?.[0]}</span>}
       </ValidationMessage>

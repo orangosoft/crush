@@ -26,13 +26,17 @@ export default function (props: {
       class="form__field"
       classList={{ required: props.required ?? false }}
       onChange={onChange}>
-      <RadioGroup.Label class="radio-group__label flex gap-1 items-center">
+      <RadioGroup.Label class="radio-group__label flex gap-1 items-center" classList={{
+        'font-medium': props.required ?? false
+      }}>
         <span>{props.label}</span>
         <Show when={required}>
-          <span class="text-red-500"><BsAsterisk size={9} /></span>
+          <span class="text-red-500"><BsAsterisk size={11} /></span>
         </Show>
       </RadioGroup.Label>
-      <div class="radio-group__items rounded-lg p-2 py-3 form__item">
+      <div class="radio-group__items rounded-lg p-2 py-3 form__item" classList={{
+        'bg-sky-50': props.required ?? false,
+      }}>
         <For each={props.options}>
           {option => (
             <RadioGroup.Item value={option.value} class="radio">

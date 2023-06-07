@@ -31,26 +31,26 @@ export default function (props: {
     emptyOption
 
   const onChange = (selectedOption: Option) => {
+    if (!selectedOption) return
     props.model.setData(props.name, selectedOption?.value ?? selectedOption.label)
     if (props.onChange) props.onChange(selectedOption?.value ?? selectedOption.label)
   }
 
-  onMount(() => {
-    cleanup = field(fieldRef)
-  })
-
-  onCleanup(() => {
-    if (!cleanup.destroy) return
-    cleanup.destroy()
-  })
+  // onMount(() => {
+  //   cleanup = field(fieldRef)
+  //   onCleanup(() => {
+  //     if (!cleanup.destroy) return
+  //     cleanup.destroy()
+  //   })
+  // })
 
   return (
     <Select.Root
       name={props.name}
       value={selectedOptionValue()}
       class="form__field"
-      classList={{ 
-        required: props.required ?? false, 
+      classList={{
+        required: props.required ?? false,
         [props.class ?? '']: true,
       }}
       options={props.options}
@@ -69,14 +69,18 @@ export default function (props: {
       )}
     >
       <Show when={props.label}>
-        <Select.Label class="select__label">
+        <Select.Label class="select__label" classList={{
+          'font-medium': props.required ?? false
+        }}>
           <span>{props.label}</span>
           <Show when={required}>
-            <span class="text-red-500"><BsAsterisk size={9} /></span>
+            <span class="text-red-500"><BsAsterisk size={11} /></span>
           </Show>
         </Select.Label>
       </Show>
-      <Select.Trigger ref={fieldRef} aria-label="Select Item" class="select__trigger w-full" onBlur={onBlur}>
+      <Select.Trigger ref={fieldRef} aria-label="Select Item" class="select__trigger w-full" onBlur={onBlur} classList={{
+        'bg-sky-50': props.required ?? false
+      }}>
         <Select.Value<Option> class="select__value">{state => state.selectedOption().label}</Select.Value>
         <Select.Icon class="select__icon">
           <CgSelect />
