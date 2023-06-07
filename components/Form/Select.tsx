@@ -27,7 +27,7 @@ export default function (props: {
   const required = props.required ?? false
   const { field, onBlur } = createField(props.name)
   const selectedOptionValue = () => props.model.data()[props.name] ?
-    props.options.find(option => (option.value ?? option.label) === props.model.data()[props.name]) :
+    props.options?.find(option => (option.value ?? option.label) === props.model.data()[props.name]) :
     emptyOption
 
   const onChange = (selectedOption: Option) => {
@@ -53,7 +53,7 @@ export default function (props: {
         required: props.required ?? false,
         [props.class ?? '']: true,
       }}
-      options={props.options}
+      options={props.options || []}
       optionValue="value"
       optionTextValue="label"
       optionDisabled="disabled"
