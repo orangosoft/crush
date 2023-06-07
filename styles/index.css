@@ -290,14 +290,12 @@
   }
 
   .radio__control {
+    @apply bg-white border-2 border-gray-300 rounded-full;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 20px;
     width: 20px;
-    border-radius: 10px;
-    border: 1px solid hsl(240 5% 84%);
-    background-color: hsl(240 6% 90%);
   }
 
   .radio__input:focus-visible + .radio__control {

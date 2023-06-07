@@ -81,7 +81,7 @@ export default function (props: {
       <Select.Trigger ref={fieldRef} aria-label="Select Item" class="select__trigger w-full" onBlur={onBlur} classList={{
         'bg-sky-50': props.required ?? false
       }}>
-        <Select.Value<Option> class="select__value">{state => state.selectedOption().label}</Select.Value>
+        <Select.Value<Option> class="select__value">{state => state.selectedOption()?.label}</Select.Value>
         <Select.Icon class="select__icon">
           <CgSelect />
         </Select.Icon>

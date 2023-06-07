@@ -12,6 +12,7 @@ export default function (props: {
   options: Option[],
   required?: boolean
   model: any
+  class?: string
 }) {
   const required = props.required ?? false
 
@@ -24,7 +25,10 @@ export default function (props: {
       name={props.name}
       value={props.model.data()[props.name]}
       class="form__field"
-      classList={{ required: props.required ?? false }}
+      classList={{ 
+        required: props.required ?? false,
+        [props.class ?? '']: true,
+      }}
       onChange={onChange}>
       <RadioGroup.Label class="radio-group__label flex gap-1 items-center" classList={{
         'font-medium': props.required ?? false
