@@ -1,5 +1,6 @@
+import { Show, splitProps } from "solid-js"
+
 import { BsAsterisk } from 'solid-icons/bs'
-import { Show } from "solid-js"
 import { TextField } from "@kobalte/core"
 import { ValidationMessage } from "@felte/reporter-solid"
 
@@ -131,7 +132,11 @@ export default function (props: {
   class?: string
   onBlur?: (val: any) => void
   onChange?: (val: any) => void
+  // any key
+  [key: string]: any
 }) {
+
+  const [_local, rest] = splitProps(props, ['type', 'name', 'label', 'placeholder', 'required', 'mask', 'class', 'onBlur', 'onChange'])
 
   const handleInput = (e: Event) => {
     if (!props.mask) return
@@ -141,6 +146,8 @@ export default function (props: {
   }
 
   const maxLength = props.mask?.length ?? undefined
+
+  
 
   return (
     <TextField.Root class="form__field" classList={{
@@ -159,7 +166,7 @@ export default function (props: {
       </Show>
       <TextField.Input type={props.type} name={props.name} placeholder={props.placeholder} class="textfield__input w-full" classList={{
         'bg-sky-50': props.required ?? false
-      }} maxLength={maxLength} onInput={handleInput} onBlur={props.onBlur} />
+      }} maxLength={maxLength} onInput={handleInput} onBlur={props.onBlur} {...rest} />
       <ValidationMessage for={props.name}>
         {(messages) => <span class='validation-message'>{messages?.[0]}</span>}
       </ValidationMessage>
