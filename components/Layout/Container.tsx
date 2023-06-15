@@ -1,12 +1,12 @@
-import { createEffect, onCleanup, onMount, splitProps } from "solid-js"
+import { createEffect, onCleanup, onMount, splitProps } from 'solid-js'
 
 export default function (props: {
-  autoScroll?: Function,
-  class?: string,
-  classList?: any,
-  contentClass?: string,
-  children?: any,
-  disabled?: boolean,
+  autoScroll?: Function
+  class?: string
+  classList?: any
+  contentClass?: string
+  children?: any
+  disabled?: boolean
   [key: string]: any
 }) {
   let contentRef: any
@@ -34,16 +34,20 @@ export default function (props: {
   }
 
   createEffect(() => {
-    if (local.disabled) {
-      contentRef.setAttribute('inert', '')
-    } else {
-      contentRef.removeAttribute('inert')
-    }
+    try {
+      if (local.disabled) {
+        contentRef?.setAttribute('inert', '')
+      } else {
+        contentRef?.removeAttribute('inert')
+      }
+    } catch (e) {}
   })
 
   return (
     <div class={`flex flex-col overflow-hidden ${local.class}`} classList={local.classList} {...rest}>
-      <div ref={contentRef} class={contentStyles()}>{local.children}</div>
+      <div ref={contentRef} class={contentStyles()}>
+        {local.children}
+      </div>
     </div>
   )
 }
