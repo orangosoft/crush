@@ -6,7 +6,7 @@ import { Show } from "solid-js"
 import { ValidationMessage } from "@felte/reporter-solid"
 import { createField } from "@felte/solid"
 
-type Option = { label: string, value?: any, disabled?: boolean }
+type Option = { label: string, value: string }
 
 export default function (props: {
   name: string
@@ -16,29 +16,37 @@ export default function (props: {
   required?: boolean
   placeholder?: string
   model: any
-  onChange?: (value: string) => void
+  onChange?: (value: string[]) => void
 }) {
 
   let fieldRef: any
 
   const placeHolder = props.placeholder ?? 'Select an option...'
-  const emptyOption = { label: '', value: '' }
+  // const emptyOption = { label: '', value: '' }
   const required = props.required ?? false
   const { onBlur } = createField(props.name)
-  const selectedOptionValue = () => props.model.data()[props.name] ?
-    props.options?.find(option => (option.value ?? option.label) === props.model.data()[props.name]) :
-    emptyOption
 
-  const onChange = (selectedOption: Option) => {
-    if (!selectedOption) return
-    props.model.setData(props.name, selectedOption?.value ?? selectedOption.label)
-    if (props.onChange) props.onChange(selectedOption?.value ?? selectedOption.label)
+  const selectedOptions = () => props.model.data()[props.name] ?
+    props.options?.filter(option => (option.value ?? option.label) === props.model.data()[props.name]) :
+    []
+  
+
+  // const selectedOptionValue = () => props.model.data()[props.name] ?
+  //   props.options?.find(option => (option.value ?? option.label) === props.model.data()[props.name]) :
+  //   emptyOption
+
+  const onChange = (selectedOptions: Option[]) => {
+    // if (!selectedOptions) return
+    const values = selectedOptions.map(option => option.value)
+    props.model.setData(props.name, values)
+    if (props.onChange) props.onChange(values)
   }
 
   return (
-    <Select.Root
+    <Select.Root<Option>
+      multiple
       name={props.name}
-      value={selectedOptionValue()}
+      value={selectedOptions()}
       class="form__field"
       classList={{
         required: props.required ?? false,
@@ -47,7 +55,6 @@ export default function (props: {
       options={props.options || []}
       optionValue="value"
       optionTextValue="label"
-      optionDisabled="disabled"
       placeholder={placeHolder}
       onChange={onChange}
       itemComponent={props => (
@@ -74,7 +81,7 @@ export default function (props: {
       }}>
         <Select.Value<Option> class="select__value">{state => state.selectedOption()?.label}</Select.Value>
         <Select.Icon class="select__icon">
-          <CgSelect size={20} />
+          <CgSelect />
         </Select.Icon>
       </Select.Trigger>
       <Select.Portal>

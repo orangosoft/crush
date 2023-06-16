@@ -1,8 +1,8 @@
-import { Show, splitProps } from "solid-js"
+import { Show, splitProps } from 'solid-js'
 
 import { BsAsterisk } from 'solid-icons/bs'
-import { TextField } from "@kobalte/core"
-import { ValidationMessage } from "@felte/reporter-solid"
+import { TextField } from '@kobalte/core'
+import { ValidationMessage } from '@felte/reporter-solid'
 
 function isMaskMatch(value: string, mask: string, partialMatch = true): boolean {
   let valueIndex = 0
@@ -126,17 +126,18 @@ export default function (props: {
   type?: string
   name: string
   label?: string
+  desc?: string
   placeholder?: string
-  required?: boolean,
-  mask?: string,
+  required?: boolean
+  mask?: string
   class?: string
+  children?: any
   onBlur?: (val: any) => void
   onChange?: (val: any) => void
   // any key
   [key: string]: any
 }) {
-
-  const [_local, rest] = splitProps(props, ['type', 'name', 'label', 'placeholder', 'required', 'mask', 'class', 'onBlur', 'onChange'])
+  const [_local, rest] = splitProps(props, ['type', 'name', 'label', 'desc', 'placeholder', 'required', 'mask', 'class', 'children', 'onBlur', 'onChange'])
 
   const handleInput = (e: Event) => {
     if (!props.mask) return
@@ -147,28 +148,49 @@ export default function (props: {
 
   const maxLength = props.mask?.length ?? undefined
 
-  
-
   return (
-    <TextField.Root class="form__field" classList={{
-      required: props.required ?? false,
-      [props.class ?? '']: true
-    }} onChange={props.onChange}>
+    <TextField.Root
+      class="form__field"
+      classList={{
+        required: props.required ?? false,
+        [props.class ?? '']: true,
+      }}
+      onChange={props.onChange}
+    >
       <Show when={props.label}>
-        <TextField.Label class="select__label" classList={{
-          'font-medium': props.required ?? false
-        }}>
+        <TextField.Label
+          class="textfield__label"
+          classList={{
+            'font-medium': props.required ?? false,
+          }}
+        >
           <span>{props.label}</span>
           <Show when={props.required}>
-            <span class="text-red-500"><BsAsterisk size={11} /></span>
+            <span class="text-red-500">
+              <BsAsterisk size={11} />
+            </span>
           </Show>
         </TextField.Label>
       </Show>
-      <TextField.Input type={props.type} name={props.name} placeholder={props.placeholder} class="textfield__input w-full" classList={{
-        'bg-sky-50': props.required ?? false
-      }} maxLength={maxLength} onInput={handleInput} onBlur={props.onBlur} {...rest} />
+      <TextField.Input
+        type={props.type}
+        name={props.name}
+        placeholder={props.placeholder}
+        class="textfield__input w-full"
+        classList={{
+          'bg-sky-50': props.required ?? false,
+        }}
+        maxLength={maxLength}
+        onInput={handleInput}
+        onBlur={props.onBlur}
+        {...rest}
+      />
+      {props.children}
+      <Show when={props.desc}>
+        <TextField.Description class="textfield__desc">{props.desc}</TextField.Description>
+      </Show>
       <ValidationMessage for={props.name}>
-        {(messages) => <span class='validation-message'>{messages?.[0]}</span>}
+        {messages => <span class="validation-message">{messages?.[0]}</span>}
       </ValidationMessage>
     </TextField.Root>
   )
