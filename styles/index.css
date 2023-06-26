@@ -118,7 +118,7 @@
     display: inline-flex;
     align-items: center;
   }
-  
+
   .checkbox__control {
     height: 20px;
     width: 20px;
@@ -126,12 +126,12 @@
     border: 1px solid hsl(240 5% 84%);
     background-color: hsl(240 6% 90%);
   }
-  
+
   .checkbox__input:focus-visible + .checkbox__control {
     outline: 2px solid hsl(200 98% 39%);
     outline-offset: 2px;
   }
-  
+
   .checkbox__control[data-checked] {
     border-color: hsl(200 98% 39%);
     background-color: hsl(200 98% 39%);
@@ -283,9 +283,9 @@
     @apply rounded-md shadow-sm px-4 py-2 disabled:text-gray-500 bg-gray-200/60;
   }
 
-  .textfield__input-code {
+  /* .textfield__input-code {
     @apply;
-  }
+  } */
 
   .textfield__textarea {
     @apply border border-gray-300 resize-none rounded-md px-4 py-2 disabled:text-gray-500;
