@@ -67,13 +67,13 @@
   color: hsl(240 5% 34%);
 }
 .dialog__title {
-  @apply text-base;
-  font-weight: 500;
-  color: hsl(240 6% 10%);
+  @apply font-bold text-xl;
+  /* font-weight: 500; */
+  /* color: hsl(240 6% 10%); */
 }
 .dialog__description {
   font-size: 16px;
-  color: hsl(240 5% 26%);
+  /* color: hsl(240 5% 26%); */
 }
 @keyframes overlayShow {
   from {
