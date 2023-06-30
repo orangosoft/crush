@@ -67,7 +67,7 @@
   color: hsl(240 5% 34%);
 }
 .dialog__title {
-  @apply font-bold text-xl;
+  @apply font-medium text-xl;
   /* font-weight: 500; */
   /* color: hsl(240 6% 10%); */
 }
