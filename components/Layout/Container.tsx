@@ -1,7 +1,7 @@
 import { createEffect, onCleanup, onMount, splitProps } from 'solid-js'
 
 export default function (props: {
-  autoScroll?: Function
+  autoScroll?: (fn: () => void) => void
   class?: string
   classList?: any
   contentClass?: string
@@ -10,7 +10,7 @@ export default function (props: {
   [key: string]: any
 }) {
   let contentRef: any
-  let [local, rest] = splitProps(props, ['autoScroll', 'class', 'classList', 'contentClass', 'children', 'disabled'])
+  const [local, rest] = splitProps(props, ['autoScroll', 'class', 'classList', 'contentClass', 'children', 'disabled'])
   const contentStyles = () => `flex flex-col flex-grow h-0 overflow-auto  ${local.contentClass ?? ''}`
 
   if (local.autoScroll) {
@@ -40,6 +40,7 @@ export default function (props: {
       } else {
         contentRef?.removeAttribute('inert')
       }
+    // eslint-disable-next-line no-empty
     } catch (e) {}
   })
 
